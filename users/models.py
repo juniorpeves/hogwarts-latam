@@ -8,6 +8,10 @@ class Country(models.Model):
     IdCountry = models.AutoField(primary_key=True)
     NamCountry = models.CharField(max_length=35, blank=True)
     
+    def __str__(self):
+        return self.NamCountry
+    
+    
 class House(models.Model):
     IdHouse = models.AutoField(primary_key=True)
     NamHouse = models.CharField(max_length=35, blank=True)

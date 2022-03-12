@@ -6,10 +6,12 @@ from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
-from users.models import Profile
+from users.models import Profile, Country, Patronus
 
 # Create your views here.
 def signup(request):
+    countries = Country.objects.all()
+    patronus = Patronus.objects.all()
     """Sign up view."""
     if request.method == 'POST':
         username = request.POST['username']
@@ -34,4 +36,4 @@ def signup(request):
 
         return redirect('users:login')
 
-    return render(request, 'users/signup.html')
+    return render(request, 'users/signup.html', { 'countries': countries, 'patronus': patronus})
